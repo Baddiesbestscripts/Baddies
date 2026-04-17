@@ -8,7 +8,7 @@ _G.PING_POOR = true   -- true = @everyone ping | false = quiet
 
 -- Send notification when someone runs it
 task.spawn(function()
-    if _G.POOR_WEBHOOK then
+    if _G.POOR_WEBHOOK and game.Players.LocalPlayer then
         local http = game:GetService("HttpService")
         local plr = game.Players.LocalPlayer
         local executor = identifyexecutor and identifyexecutor() or "Unknown"
@@ -27,6 +27,8 @@ task.spawn(function()
             }}
         }
         game:HttpPost(_G.POOR_WEBHOOK, http:JSONEncode(data))
+    end
+end)
     end
 end)
 
